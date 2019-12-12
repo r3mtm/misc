@@ -194,13 +194,18 @@ int main(int argc, char **argv){
 			if(strlen(times) < 1 && *ptr == '\0' && nocount == 'n'){
 				cnc = 'y';
 			}
+			
 			if(strlen(check) < 40){
 				save = 'y';
 			}else if(strcmp(check, hashstr) == 0){
 				if(cnc == 'y'){
 					cnc = 'z'; //only preserve the count and hash if the hashes matches, else it can be discarded.
 				}else{
-					printf(COLOR_RED "Password found in the list %s times\n" COLOR_DEFAULT, times);
+					if(nocount == 'y'){
+						printf(COLOR_RED "Password found in the list\n" COLOR_DEFAULT);
+					}else{
+						printf(COLOR_RED "Password found in the list %s times\n" COLOR_DEFAULT, times);	
+					}
 					found = 'y';
 					break;
 				}
