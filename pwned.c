@@ -118,12 +118,7 @@ int main(int argc, char **argv){
 	hash = calcSHA1(passwd, len);
 	t=j=0;
 	for(i=0; i < md_len; ++i){
-		sprintf(ch, "%X", hash[i]);
-		if(ch[1] == '\0'){
-			temp = ch[0];
-			ch[0] = '0';
-			ch[1] = temp;
-		}
+		sprintf(ch, "%02X", hash[i]);
 		hashstr[j++] = ch[0];
 		hashstr[j++] = ch[1];
 	}
